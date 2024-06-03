@@ -7,12 +7,14 @@ import pytest
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+from selenium.webdriver.chrome.options import Options
+
 @pytest.fixture()
 def driver():
-    cdp = "C:/Users/HP/Desktop/chromedriver/chromedriver.exe"
-    service = Service(executable_path=cdp)
-    sleep(2)
-    driver=webdriver.Chrome(service=service)    
+    options = Options()
+    #Открыть браузер selenium, но без отображения окна
+    options.add_argument('--headless')
+    driver=webdriver.Chrome(options=options)    
     return driver
 
 def test_but(driver):
