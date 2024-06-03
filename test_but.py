@@ -17,4 +17,4 @@ def driver():
 
 def test_but(driver):
     driver.get('https://www.qa-practice.com/elements/button/simple')
-    return driver.find_element(By.ID, 'submit-id-submit').is_displayed()
+    assert driver.find_element(By.ID, 'submit-id-submit').is_displayed()
