@@ -1,0 +1,23 @@
+name: Automatize test 
+
+on:
+  push
+
+jobs:
+  test: 
+    #Запуск системы на определенном ПО
+    runs-on: ubuntu-latest
+    #Шаги при запуске
+    steps:
+      - name: Check reposit
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+      - name: Install Chrome
+        run: sudo apt-get install google-chrome-stable
+      - name: install dependencies
+        run: pip install -r requirements.txt
+      - name: Using Test
+        run: pytest -v
